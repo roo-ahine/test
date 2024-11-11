@@ -1,4 +1,4 @@
-# THIS FILE SHOULD NOT BE UPDATED
+# TEST 
 FROM golang:buster as app
 RUN mkdir -p /yopass
 WORKDIR /yopass
