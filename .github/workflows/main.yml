@@ -1,22 +1,32 @@
-name: Create production promotion pull request
+name: Update Main from Staging
+
 on:
   push:
     branches:
       - staging
-  workflow_dispatch: # Allows manual triggering
+  workflow_dispatch:
 
 jobs:
-  productionPromotion:
+  create_pull_request:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout staging branch
+        uses: actions/checkout@v3
         with:
           ref: staging
-      - name: Reset promotion branch
-        run: |
-          git checkout -- Dockerfile .github/workflows/*
-          git reset HEAD Dockerfile .github/workflows/*
+
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v5
         with:
-          branch: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: main
+          branch: update-main-from-staging
+          title: 'Update main from staging'
+          body: |
+            This pull request updates the `main` branch with the latest changes from the `staging` branch.
+          labels: update
+          assignees: your-github-username
+          # Ensure the following options are set to avoid auto-merging
+          delete-branch: false
+
