@@ -26,8 +26,8 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: "Sync staging to main"
-        branch: "staging"
-        base: "main"
+        branch: "main"
+        base: "staging"
         title: "Sync Staging to main"
         body: "This PR merges changes from the staging branch into the main branch."
         labels: "auto-sync"
