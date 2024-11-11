@@ -1,4 +1,4 @@
-# this is a test
+# this is a test 2
 FROM golang:buster as app
 RUN mkdir -p /yopass
 WORKDIR /yopass
