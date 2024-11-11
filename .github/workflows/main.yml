@@ -12,8 +12,8 @@ jobs:
           ref: main
       - name: Reset promotion branch
         run: |
-          git fetch origin staging
-          git reset --hard staging
+          git checkout -- Dockerfile .github/workflows/*
+          git reset HEAD Dockerfile .github/workflows/*
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
