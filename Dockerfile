@@ -1,4 +1,4 @@
-# TEST 
+# TEST 3
 FROM golang:buster as app
 RUN mkdir -p /yopass
 WORKDIR /yopass
