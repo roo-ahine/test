@@ -1,22 +1,20 @@
-name: Create production promotion pull request
+name: test
 on:
   push:
     branches:
-      - staging
-  workflow_dispatch: # Allows manual triggering
-  
+      - main
 jobs:
   productionPromotion:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
+          ref: production
       - name: Reset promotion branch
         run: |
-          git fetch origin staging
+          git fetch origin main:main
           git reset --hard main
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v7
         with:
-          branch: sync-staging-to-main
+          branch: production-promotion
