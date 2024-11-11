@@ -1,4 +1,4 @@
-# this is a test
+# this is a test that should not be applied
 FROM golang:buster as app
 RUN mkdir -p /yopass
 WORKDIR /yopass
