@@ -18,7 +18,7 @@ jobs:
           git reset --hard staging
       - name: Restore our version of Dockerfile
         run: |
-          git checkout main -- Dockerfile
+          git checkout HEAD -- Dockerfile
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
