@@ -21,7 +21,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           base: main
-          branch: update-main-from-staging
+          branch: staging 
           title: 'Update main from staging'
           body: |
             This pull request updates the `main` branch with the latest changes from the `staging` branch.
