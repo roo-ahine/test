@@ -1,6 +1,8 @@
 name: Sync staging branch to main
 on:
   push:
+    paths-ignore:
+      - 'Dockerfile'
     branches:
       - staging
   workflow_dispatch:
@@ -16,9 +18,6 @@ jobs:
         run: |
           git fetch origin staging:staging
           git reset --hard staging
-      - name: Restore our version of Dockerfile
-        run: |
-          git checkout HEAD -- Dockerfile
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
