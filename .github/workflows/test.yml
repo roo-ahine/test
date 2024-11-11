@@ -16,10 +16,6 @@ jobs:
         run: |
           git fetch origin staging:staging
           git reset --hard staging
-      - name: Remove Dockerfile changes
-        run: |
-          git reset HEAD Dockerfile
-          git checkout -- Dockerfile
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
