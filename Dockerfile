@@ -1,4 +1,4 @@
-# TEST 3
+# TEST should not update 
 FROM golang:buster as app
 RUN mkdir -p /yopass
 WORKDIR /yopass
