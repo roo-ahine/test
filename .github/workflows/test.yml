@@ -1,4 +1,4 @@
-name: Create production promotion pull request
+name: Sync staging branch to main
 on:
   push:
     branches:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  productionPromotion:
+  syncStagingToMain:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,7 +16,10 @@ jobs:
         run: |
           git fetch origin staging:staging
           git reset --hard staging
+      - name: Restore our version of Dockerfile
+        run: |
+          git checkout main -- Dockerfile
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
-          branch: production-promotion
+          branch: sync-staging-to-main
