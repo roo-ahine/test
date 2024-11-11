@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - staging
+  workflow_dispatch: # Allows manual triggering
 jobs:
   productionPromotion:
     runs-on: ubuntu-latest
