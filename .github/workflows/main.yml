@@ -25,9 +25,9 @@ jobs:
       uses: peter-evans/create-pull-request@v5
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        commit-message: "Sync staging to master"
+        commit-message: "Sync staging to main"
         branch: "staging"
-        base: "master"
-        title: "Sync Staging to Master"
-        body: "This PR merges changes from the staging branch into the master branch."
+        base: "main"
+        title: "Sync Staging to main"
+        body: "This PR merges changes from the staging branch into the main branch."
         labels: "auto-sync"
