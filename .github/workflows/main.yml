@@ -21,12 +21,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           base: main
-          branch: update-main-from-staging
+          branch: staging
           title: 'Update main from staging'
           body: |
             This pull request updates the `main` branch with the latest changes from the `staging` branch.
           labels: update
-          assignees: your-github-username
-          # Ensure the following options are set to avoid auto-merging
-          merge: false
           delete-branch: false
