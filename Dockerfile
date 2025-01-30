@@ -1,4 +1,4 @@
-# test
+# trigger test
 FROM public.ecr.aws/docker/library/maven:3.8.4-jdk-8
 
 COPY . /usr/src/poc
