@@ -1,16 +1,11 @@
-# TEST 3
-FROM golang:buster as app
-RUN mkdir -p /yopass
-WORKDIR /yopass
-COPY . .
-RUN go build ./cmd/yopass && go build ./cmd/yopass-server
+# trigger test
+FROM public.ecr.aws/docker/library/maven:3.8.4-jdk-8
 
-FROM node:18 as website
-COPY website /website
-WORKDIR /website
-RUN yarn install --network-timeout 600000 && yarn build
+COPY . /usr/src/poc
+WORKDIR /usr/src/poc
+RUN mvn clean && mvn package
 
-FROM gcr.io/distroless/base
-COPY --from=app /yopass/yopass /yopass/yopass-server /
-COPY --from=website /website/build /public
-ENTRYPOINT ["/yopass-server"]
+# set this to disable the exploit
+#ENV LOG4J_FORMAT_MSG_NO_LOOKUPS=true
+ENV SECRET_VALUE='if you can read this this code is vulnerable'
+CMD ["java", "-jar", "/usr/src/poc/target/log4j-rce-1.0-SNAPSHOT-jar-with-dependencies.jar"]
